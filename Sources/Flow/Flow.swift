@@ -10,7 +10,7 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
     public typealias FlowCompleted = ((_ step: FlowCompletedStep) -> Void)
     
     public private(set) var navigationController: UINavigationController = UINavigationController()
-    let diContainer: FlowDiContainer
+    public let diContainer: FlowDiContainer
     
     private let flowCompletedClosure: FlowCompleted?
     
