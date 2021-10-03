@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Flow",
+        "repositoryURL": "https://github.com/levieggert/Flow.git",
+        "state": {
+          "branch": null,
+          "revision": "65427f4312c3de241ab31c58bb13a6991e863216",
+          "version": "1.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
