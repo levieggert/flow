@@ -25,3 +25,4 @@ profile
 
 # Swift Package Manager
 .build/
+Example/.build/
