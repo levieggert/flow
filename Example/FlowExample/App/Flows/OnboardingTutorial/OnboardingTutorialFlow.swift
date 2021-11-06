@@ -6,7 +6,7 @@
 import UIKit
 import Flow
 
-class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, OnboardingTutorialFlowCompletedStep> {
+class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowStep, OnboardingTutorialFlowCompletedStep> {
                         
     override init(diContainer: OnboardingTutorialFlowDiContainer, completed: @escaping FlowCompleted) {
                 
@@ -27,13 +27,9 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, Onboarding
         return view
     }
     
-    override func navigate(step: FlowStepType) {
+    override func navigate(step: AppFlowStep) {
         
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
-        
-        switch appStep {
+        switch step {
            
         case .backTappedFromOnboardingTutorialOne:
             completeFlow(step: .userNavigatedBackFromTutorial)

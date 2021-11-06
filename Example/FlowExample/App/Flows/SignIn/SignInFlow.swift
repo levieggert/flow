@@ -6,7 +6,7 @@
 import UIKit
 import Flow
 
-class SignInFlow: Flow<SignInFlowDiContainer, SignInFlowCompletedStep> {
+class SignInFlow: Flow<SignInFlowDiContainer, AppFlowStep, SignInFlowCompletedStep> {
     
     override init(diContainer: SignInFlowDiContainer, completed: @escaping FlowCompleted) {
         
@@ -25,13 +25,9 @@ class SignInFlow: Flow<SignInFlowDiContainer, SignInFlowCompletedStep> {
         return view
     }
     
-    override func navigate(step: FlowStepType) {
+    override func navigate(step: AppFlowStep) {
              
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
-        
-        switch appStep {
+        switch step {
             
         case .backTappedFromSignIn:
             completeFlow(step: .userNavigatedBackFromSignIn)

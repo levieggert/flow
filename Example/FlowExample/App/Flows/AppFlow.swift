@@ -6,7 +6,7 @@
 import UIKit
 import Flow
 
-class AppFlow: Flow<CoreDiContainer, AppFlowCompletedStep> {
+class AppFlow: Flow<CoreDiContainer, AppFlowStep, AppFlowCompletedStep> {
         
     private var onboardingFlow: OnboardingFlow?
     private var navigationStarted: Bool = false
@@ -31,13 +31,9 @@ class AppFlow: Flow<CoreDiContainer, AppFlowCompletedStep> {
         return navigationController
     }
     
-    override func navigate(step: FlowStepType) {
-            
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
+    override func navigate(step: AppFlowStep) {
         
-        switch appStep {
+        switch step {
             
         case .appLaunchedFromTerminatedState:
             navigateToOnboardingFlow(animated: true)

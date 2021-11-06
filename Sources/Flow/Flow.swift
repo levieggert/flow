@@ -5,12 +5,13 @@
 
 import UIKit
 
-open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, FlowCompletedStep: FlowCompletedStepType>: NSObject, FlowDelegate {
+open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, FlowCompletedStep: FlowCompletedStepType>: NSObject {
     
     public typealias FlowCompleted = ((_ step: FlowCompletedStep) -> Void)
     
     public private(set) var navigationController: UINavigationController = UINavigationController()
     public let diContainer: FlowDiContainer
+    public let stepPublisher: FlowStepPublisher<FlowStep> = FlowStepPublisher()
     
     private let flowCompletedClosure: FlowCompleted?
     

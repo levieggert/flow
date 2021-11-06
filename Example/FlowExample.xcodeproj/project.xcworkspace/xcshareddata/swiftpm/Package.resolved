@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Flow",
-        "repositoryURL": "https://github.com/levieggert/Flow.git",
+        "repositoryURL": "/Users/levieggert/Git-Sourcetree/flow-ios",
         "state": {
           "branch": null,
-          "revision": "65427f4312c3de241ab31c58bb13a6991e863216",
-          "version": "1.0.1"
+          "revision": "156a2369d92b1884e867ce350b7d355e48f3bf50",
+          "version": "1.0.2"
         }
       }
     ]

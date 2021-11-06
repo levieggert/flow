@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4568BE7B27370EE300F195D9 /* FlowStepPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4568BE7A27370EE300F195D9 /* FlowStepPublisher.swift */; };
+		4568BE7D2737133400F195D9 /* FlowStepSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4568BE7C2737133400F195D9 /* FlowStepSubscriber.swift */; };
 		45A5FC3426E57AAC00A40869 /* FlowStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3026E57AAC00A40869 /* FlowStepType.swift */; };
 		45A5FC3526E57AAC00A40869 /* FlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3126E57AAC00A40869 /* FlowDelegate.swift */; };
 		45A5FC3626E57AAC00A40869 /* FlowCompletedStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4568BE7A27370EE300F195D9 /* FlowStepPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowStepPublisher.swift; sourceTree = "<group>"; };
+		4568BE7C2737133400F195D9 /* FlowStepSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowStepSubscriber.swift; sourceTree = "<group>"; };
 		45A5FC3026E57AAC00A40869 /* FlowStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepType.swift; sourceTree = "<group>"; };
 		45A5FC3126E57AAC00A40869 /* FlowDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowDelegate.swift; sourceTree = "<group>"; };
 		45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowCompletedStepType.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 				45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */,
 				45A5FC3126E57AAC00A40869 /* FlowDelegate.swift */,
 				45A5FC3326E57AAC00A40869 /* FlowDiContainerType.swift */,
+				4568BE7A27370EE300F195D9 /* FlowStepPublisher.swift */,
+				4568BE7C2737133400F195D9 /* FlowStepSubscriber.swift */,
 				45A5FC3026E57AAC00A40869 /* FlowStepType.swift */,
 			);
 			name = Flow;
@@ -220,6 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				4568BE7D2737133400F195D9 /* FlowStepSubscriber.swift in Sources */,
+				4568BE7B27370EE300F195D9 /* FlowStepPublisher.swift in Sources */,
 				45A5FC3526E57AAC00A40869 /* FlowDelegate.swift in Sources */,
 				45A5FC3626E57AAC00A40869 /* FlowCompletedStepType.swift in Sources */,
 				OBJ_21 /* Flow.swift in Sources */,
