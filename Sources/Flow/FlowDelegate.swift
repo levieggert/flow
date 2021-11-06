@@ -7,5 +7,7 @@ import Foundation
 
 public protocol FlowDelegate: AnyObject {
             
-    func navigate(step: FlowStepType)
+    associatedtype FlowStep: FlowStepType
+    
+    func navigate(step: FlowStep)
 }

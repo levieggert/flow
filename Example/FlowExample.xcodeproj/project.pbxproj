@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4568BE7627370B2100F195D9 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 4568BE7527370B2100F195D9 /* Flow */; };
 		45A603E6270A5C9800AAF1E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45A603E5270A5C9800AAF1E5 /* Assets.xcassets */; };
 		45A603E9270A5C9800AAF1E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A603E7270A5C9800AAF1E5 /* LaunchScreen.storyboard */; };
 		45A603F4270A5C9800AAF1E5 /* FlowExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A603F3270A5C9800AAF1E5 /* FlowExampleTests.swift */; };
@@ -33,7 +34,6 @@
 		45A60446270A5D8F00AAF1E5 /* TemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A60430270A5D8F00AAF1E5 /* TemplateView.xib */; };
 		45A60447270A5D8F00AAF1E5 /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A60431270A5D8F00AAF1E5 /* TemplateViewModel.swift */; };
 		45A60448270A5D8F00AAF1E5 /* TemplateViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A60432270A5D8F00AAF1E5 /* TemplateViewModelType.swift */; };
-		45A60452270A5FC800AAF1E5 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 45A60451270A5FC800AAF1E5 /* Flow */; };
 		45A60454270A5FF400AAF1E5 /* CoreDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A60453270A5FF400AAF1E5 /* CoreDiContainer.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A60452270A5FC800AAF1E5 /* Flow in Frameworks */,
+				4568BE7627370B2100F195D9 /* Flow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +340,7 @@
 			);
 			name = FlowExample;
 			packageProductDependencies = (
-				45A60451270A5FC800AAF1E5 /* Flow */,
+				4568BE7527370B2100F195D9 /* Flow */,
 			);
 			productName = FlowExample;
 			productReference = 45A603D9270A5C9700AAF1E5 /* FlowExample.app */;
@@ -414,7 +414,7 @@
 			);
 			mainGroup = 45A603D0270A5C9700AAF1E5;
 			packageReferences = (
-				45A60450270A5FC800AAF1E5 /* XCRemoteSwiftPackageReference "Flow" */,
+				4568BE7427370B2100F195D9 /* XCRemoteSwiftPackageReference "Flow" */,
 			);
 			productRefGroup = 45A603DA270A5C9700AAF1E5 /* Products */;
 			projectDirPath = "";
@@ -811,20 +811,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		45A60450270A5FC800AAF1E5 /* XCRemoteSwiftPackageReference "Flow" */ = {
+		4568BE7427370B2100F195D9 /* XCRemoteSwiftPackageReference "Flow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/levieggert/Flow.git";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.1;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		45A60451270A5FC800AAF1E5 /* Flow */ = {
+		4568BE7527370B2100F195D9 /* Flow */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 45A60450270A5FC800AAF1E5 /* XCRemoteSwiftPackageReference "Flow" */;
+			package = 4568BE7427370B2100F195D9 /* XCRemoteSwiftPackageReference "Flow" */;
 			productName = Flow;
 		};
 /* End XCSwiftPackageProductDependency section */

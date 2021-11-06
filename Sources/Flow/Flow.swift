@@ -5,7 +5,7 @@
 
 import UIKit
 
-open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCompletedStepType>: NSObject, FlowDelegate {
+open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, FlowCompletedStep: FlowCompletedStepType>: NSObject, FlowDelegate {
     
     public typealias FlowCompleted = ((_ step: FlowCompletedStep) -> Void)
     
@@ -42,8 +42,8 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         return UIViewController()
     }
     
-    open func navigate(step: FlowStepType) {
-        assertionFailure("\nFlow: navigate(step: FlowStepType) Subclasses should override this method.")
+    open func navigate(step: FlowStep) {
+        assertionFailure("\nFlow: navigate(step: FlowStep) Subclasses should override this method.")
     }
     
     // MARK: _
@@ -54,14 +54,14 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
     
     // MARK: -
     
-    public func addFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, sharesNavigationControllerWithParentFlow: Bool) {
+    public func addFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, sharesNavigationControllerWithParentFlow: Bool) {
         
         if sharesNavigationControllerWithParentFlow {
             flow.navigationController = navigationController
         }
     }
         
-    public func setFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool) {
+    public func setFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool) {
         
         let initialView: UIViewController = flow.initialView()
         
@@ -77,7 +77,7 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         navigationController.setViewControllers([initialView], animated: animated)
     }
     
-    public func pushFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool) {
+    public func pushFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool) {
         
         let initialView: UIViewController = flow.initialView()
         
@@ -98,7 +98,7 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         }
     }
     
-    public func presentFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool, completion: (() -> Void)?) {
+    public func presentFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool, completion: (() -> Void)?) {
         
         let initialView: UIViewController = flow.initialView()
         
@@ -138,7 +138,7 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         }
     }
     
-    public func dismissFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool, completion: (() -> Void)?) {
+    public func dismissFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool, completion: (() -> Void)?) {
         
         guard navigationController.presentedViewController == flow.navigationController else {
             assertionFailure("\nFlow: dismissFlow() Failed to dismiss flow because the flow wasn't presented by this flow.")
