@@ -10,13 +10,26 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
     public typealias FlowCompleted = ((_ step: FlowCompletedStep) -> Void)
     
     private let flowCompletedClosure: FlowCompleted?
-    private var subscriber: FlowStepSubscriber<FlowStep>?
+    private var stepSubscriber: FlowStepSubscriber<FlowStep>?
     
     public private(set) var navigationController: UINavigationController
     public let diContainer: FlowDiContainer
     public let stepPublisher: FlowStepPublisher<FlowStep> = FlowStepPublisher()
     
-    public init(navigationController: UINavigationController = UINavigationController(), diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
+    public init(diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
+        
+        print("init flow: \(type(of: self))")
+        
+        self.navigationController = UINavigationController()
+        self.diContainer = diContainer
+        self.flowCompletedClosure = completed
+        
+        super.init()
+        
+        addStepSubscriber()
+    }
+    
+    public init(navigationController: UINavigationController, diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
         
         print("init flow: \(type(of: self))")
         
@@ -26,18 +39,27 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
         
         super.init()
         
-        let subscriber: FlowStepSubscriber<FlowStep> = FlowStepSubscriber(stepPublished: { [weak self] (step: FlowStep) in
+        addStepSubscriber()
+    }
+    
+    private func addStepSubscriber() {
+        
+        guard stepSubscriber == nil else {
+            return
+        }
+        
+        let stepSubscriber: FlowStepSubscriber<FlowStep> = FlowStepSubscriber(stepPublished: { [weak self] (step: FlowStep) in
             self?.navigate(step: step)
         })
         
-        self.subscriber = subscriber
+        self.stepSubscriber = stepSubscriber
     }
     
     deinit {
         print("x deinit: \(type(of: self))")
         
-        if let subscriber = subscriber {
-            stepPublisher.unsubscribe(subscriber: subscriber)
+        if let stepSubscriber = stepSubscriber {
+            stepPublisher.unsubscribe(subscriber: stepSubscriber)
         }
     }
     
