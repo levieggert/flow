@@ -52,6 +52,8 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
             self?.navigate(step: step)
         })
         
+        stepPublisher.subscribe(subscriber: stepSubscriber)
+        
         self.stepSubscriber = stepSubscriber
     }
     
