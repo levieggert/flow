@@ -8,20 +8,22 @@ import Flow
 
 class SignInViewModel: TemplateViewModelType {
     
-    private weak var flowDelegate: FlowDelegate?
+    private let flowStepPublisher: FlowStepPublisher<AppFlowStep>
     
     let title: String = "Sign In"
     
-    required init(flowDelegate: FlowDelegate) {
+    required init(flowStepPublisher: FlowStepPublisher<AppFlowStep>) {
         
-        self.flowDelegate = flowDelegate
+        self.flowStepPublisher = flowStepPublisher
     }
     
     func backTapped() {
-        flowDelegate?.navigate(step: AppFlowStep.backTappedFromSignIn)
+        
+        flowStepPublisher.send(step: .backTappedFromSignIn)
     }
     
     func continueTapped() {
-        flowDelegate?.navigate(step: AppFlowStep.userDidSignInFromSignIn)
+        
+        flowStepPublisher.send(step: .userDidSignInFromSignIn)
     }
 }

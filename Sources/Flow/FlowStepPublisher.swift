@@ -33,10 +33,19 @@ public class FlowStepPublisher<FlowStep: FlowStepType> {
     public func subscribe(stepPublished: @escaping FlowStepPublisher<FlowStep>.PublishedClosure) -> FlowStepSubscriber<FlowStep> {
         
         let subscriber: FlowStepSubscriber = FlowStepSubscriber(stepPublished: stepPublished)
-        
-        subscribers.append(subscriber)
+            
+        subscribe(subscriber: subscriber)
         
         return subscriber
+    }
+    
+    public func subscribe(subscriber: FlowStepSubscriber<FlowStep>) {
+                
+        guard !subscribers.contains(subscriber) else {
+            return
+        }
+        
+        subscribers.append(subscriber)
     }
     
     public func send(step: FlowStep) {

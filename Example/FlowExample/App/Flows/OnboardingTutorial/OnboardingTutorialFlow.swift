@@ -20,7 +20,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowSte
     override func initialView() -> UIViewController {
         
         let viewModel = OnboardingTutorialOneViewModel(
-            flowDelegate: self
+            flowStepPublisher: stepPublisher
         )
         let view = TemplateView(viewModel: viewModel)
         
@@ -37,7 +37,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowSte
         case .continueTappedFromOnboardingTutorialOne:
             
             let viewModel = OnboardingTutorialTwoViewModel(
-                flowDelegate: self
+                flowStepPublisher: stepPublisher
             )
             let view = TemplateView(viewModel: viewModel)
             
@@ -49,7 +49,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowSte
         case .continueTappedFromOnboardingTutorialTwo:
             
             let viewModel = OnboardingTutorialThreeViewModel(
-                flowDelegate: self
+                flowStepPublisher: stepPublisher
             )
             let view = TemplateView(viewModel: viewModel)
             

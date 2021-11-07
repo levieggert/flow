@@ -19,7 +19,7 @@ class SignInFlow: Flow<SignInFlowDiContainer, AppFlowStep, SignInFlowCompletedSt
     
     override func initialView() -> UIViewController {
         
-        let viewModel = SignInViewModel(flowDelegate: self)
+        let viewModel = SignInViewModel(flowStepPublisher: stepPublisher)
         let view = TemplateView(viewModel: viewModel)
         
         return view

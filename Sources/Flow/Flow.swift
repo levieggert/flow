@@ -9,29 +9,36 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
     
     public typealias FlowCompleted = ((_ step: FlowCompletedStep) -> Void)
     
-    public private(set) var navigationController: UINavigationController = UINavigationController()
+    private let flowCompletedClosure: FlowCompleted?
+    private var subscriber: FlowStepSubscriber<FlowStep>?
+    
+    public private(set) var navigationController: UINavigationController
     public let diContainer: FlowDiContainer
     public let stepPublisher: FlowStepPublisher<FlowStep> = FlowStepPublisher()
     
-    private let flowCompletedClosure: FlowCompleted?
-    
-    public init(diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
+    public init(navigationController: UINavigationController = UINavigationController(), diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
+        
         print("init flow: \(type(of: self))")
-        self.diContainer = diContainer
-        self.flowCompletedClosure = completed
-        super.init()
-    }
-    
-    public init(navigationController: UINavigationController, diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
-        print("init flow: \(type(of: self))")
+        
         self.navigationController = navigationController
         self.diContainer = diContainer
         self.flowCompletedClosure = completed
+        
         super.init()
+        
+        let subscriber: FlowStepSubscriber<FlowStep> = FlowStepSubscriber(stepPublished: { [weak self] (step: FlowStep) in
+            self?.navigate(step: step)
+        })
+        
+        self.subscriber = subscriber
     }
     
     deinit {
         print("x deinit: \(type(of: self))")
+        
+        if let subscriber = subscriber {
+            stepPublisher.unsubscribe(subscriber: subscriber)
+        }
     }
     
     open var presentsInitialViewOnFlowInsteadOfNavigationController: Bool {

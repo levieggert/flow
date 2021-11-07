@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4568BE7927370BFD00F195D9 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 4568BE7827370BFD00F195D9 /* Flow */; };
+		4568BE8027371DBF00F195D9 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 4568BE7F27371DBF00F195D9 /* Flow */; };
 		45A603E6270A5C9800AAF1E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45A603E5270A5C9800AAF1E5 /* Assets.xcassets */; };
 		45A603E9270A5C9800AAF1E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A603E7270A5C9800AAF1E5 /* LaunchScreen.storyboard */; };
 		45A603F4270A5C9800AAF1E5 /* FlowExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A603F3270A5C9800AAF1E5 /* FlowExampleTests.swift */; };
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4568BE7927370BFD00F195D9 /* Flow in Frameworks */,
+				4568BE8027371DBF00F195D9 /* Flow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +340,7 @@
 			);
 			name = FlowExample;
 			packageProductDependencies = (
-				4568BE7827370BFD00F195D9 /* Flow */,
+				4568BE7F27371DBF00F195D9 /* Flow */,
 			);
 			productName = FlowExample;
 			productReference = 45A603D9270A5C9700AAF1E5 /* FlowExample.app */;
@@ -414,7 +414,7 @@
 			);
 			mainGroup = 45A603D0270A5C9700AAF1E5;
 			packageReferences = (
-				4568BE7727370BFD00F195D9 /* XCRemoteSwiftPackageReference "flow-ios" */,
+				4568BE7E27371DBF00F195D9 /* XCRemoteSwiftPackageReference "flow-ios" */,
 			);
 			productRefGroup = 45A603DA270A5C9700AAF1E5 /* Products */;
 			projectDirPath = "";
@@ -811,7 +811,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4568BE7727370BFD00F195D9 /* XCRemoteSwiftPackageReference "flow-ios" */ = {
+		4568BE7E27371DBF00F195D9 /* XCRemoteSwiftPackageReference "flow-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "file:///Users/levieggert/Git-Sourcetree/flow-ios";
 			requirement = {
@@ -822,9 +822,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4568BE7827370BFD00F195D9 /* Flow */ = {
+		4568BE7F27371DBF00F195D9 /* Flow */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4568BE7727370BFD00F195D9 /* XCRemoteSwiftPackageReference "flow-ios" */;
+			package = 4568BE7E27371DBF00F195D9 /* XCRemoteSwiftPackageReference "flow-ios" */;
 			productName = Flow;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -28,7 +28,7 @@ class OnboardingFlow: Flow<OnboardingFlowDiContainer, AppFlowStep, OnboardingFlo
     override func initialView() -> UIViewController {
         
         let viewModel = OnboardingWelcomeViewModel(
-            flowDelegate: self
+            flowStepPublisher: stepPublisher
         )
         let view = TemplateView(viewModel: viewModel)
         

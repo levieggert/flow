@@ -8,13 +8,13 @@ import Flow
 
 class OnboardingWelcomeViewModel: TemplateViewModelType {
     
-    private weak var flowDelegate: FlowDelegate?
+    private let flowStepPublisher: FlowStepPublisher<AppFlowStep>
     
     let title: String = "Welcome"
     
-    required init(flowDelegate: FlowDelegate) {
+    required init(flowStepPublisher: FlowStepPublisher<AppFlowStep>) {
         
-        self.flowDelegate = flowDelegate
+        self.flowStepPublisher = flowStepPublisher
     }
     
     func backTapped() {
@@ -22,6 +22,6 @@ class OnboardingWelcomeViewModel: TemplateViewModelType {
     }
     
     func continueTapped() {
-        flowDelegate?.navigate(step: AppFlowStep.continueTappedFromWelcome)
+        flowStepPublisher.send(step: .continueTappedFromWelcome)
     }
 }
