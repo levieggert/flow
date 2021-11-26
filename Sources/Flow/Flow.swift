@@ -54,9 +54,9 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
         return false
     }
     
-    open func initialView() -> UIViewController {
+    open func initialView() -> FlowView {
         assertionFailure("\nFlow: initialView() Subclasses should override this method.")
-        return UIViewController()
+        return FlowView(view: UIViewController())
     }
     
     open func navigate(step: FlowStep) {
@@ -80,7 +80,8 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
         
     public func setFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool) {
         
-        let initialView: UIViewController = flow.initialView()
+        let initialFlowView: FlowView = flow.initialView()
+        let initialView: UIViewController = initialFlowView.view
         
         if initialView is UINavigationController {
             assertionFailure("\nFlow: setFlow() Failed to set flow because the initialView() is a UINavigationController.  initialView() must be a UIViewController.")
@@ -96,7 +97,8 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
     
     public func pushFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool) {
         
-        let initialView: UIViewController = flow.initialView()
+        let initialFlowView: FlowView = flow.initialView()
+        let initialView: UIViewController = initialFlowView.view
         
         if initialView is UINavigationController {
             assertionFailure("\nFlow: pushFlow() Failed to push flow because the initialView() is a UINavigationController.  initialView() must be a UIViewController.")
@@ -117,7 +119,8 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, Fl
     
     public func presentFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool, presentationCompleted: (() -> Void)?) {
         
-        let initialView: UIViewController = flow.initialView()
+        let initialFlowView: FlowView = flow.initialView()
+        let initialView: UIViewController = initialFlowView.view
         
         if initialView is UINavigationController {
             assertionFailure("\nFlow: presentFlow() Failed to present flow because the initialView() is a UINavigationController.  initialView() must be a UIViewController.\n  parentFlow: \(type(of: self))\n  childFlow: \(type(of: flow))")

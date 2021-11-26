@@ -1,8 +1,6 @@
 //
-//  FlowStepPublisher.swift
-//  Flow
-//
-//  Created by Levi Eggert on 11/6/21.
+//  Created by Levi Eggert.
+//  Copyright © 2020 Levi Eggert. All rights reserved.
 //
 
 import Foundation

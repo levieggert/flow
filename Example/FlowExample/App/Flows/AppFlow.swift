@@ -27,8 +27,8 @@ class AppFlow: Flow<CoreDiContainer, AppFlowStep, AppFlowCompletedStep> {
         removeObservers()
     }
     
-    override func initialView() -> UIViewController {
-        return navigationController
+    override func initialView() -> FlowView {
+        return FlowView(view: navigationController)
     }
     
     override func navigate(step: AppFlowStep) {

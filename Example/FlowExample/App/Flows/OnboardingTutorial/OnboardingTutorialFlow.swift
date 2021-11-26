@@ -17,7 +17,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowSte
 
     }
     
-    override func initialView() -> UIViewController {
+    override func initialView() -> FlowView {
         
         let viewModel = OnboardingTutorialOneViewModel(
             stepPublisher: stepPublisher
@@ -25,7 +25,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowSte
         
         let view = TemplateView(viewModel: viewModel)
         
-        return view
+        return FlowView(view: view)
     }
     
     override func navigate(step: AppFlowStep) {

@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		4500FFAF2751425A0032BD0E /* FlowStepPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500FFAD2751425A0032BD0E /* FlowStepPublisher.swift */; };
 		4500FFB02751425A0032BD0E /* FlowStepSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500FFAE2751425A0032BD0E /* FlowStepSubscriber.swift */; };
+		454E86FE2751512E00525D9C /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454E86FD2751512E00525D9C /* FlowView.swift */; };
 		45A5FC3426E57AAC00A40869 /* FlowStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3026E57AAC00A40869 /* FlowStepType.swift */; };
 		45A5FC3626E57AAC00A40869 /* FlowCompletedStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */; };
 		45A5FC3726E57AAC00A40869 /* FlowDiContainerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3326E57AAC00A40869 /* FlowDiContainerType.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		4500FFAD2751425A0032BD0E /* FlowStepPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepPublisher.swift; sourceTree = "<group>"; };
 		4500FFAE2751425A0032BD0E /* FlowStepSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepSubscriber.swift; sourceTree = "<group>"; };
+		454E86FD2751512E00525D9C /* FlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
 		45A5FC3026E57AAC00A40869 /* FlowStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepType.swift; sourceTree = "<group>"; };
 		45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowCompletedStepType.swift; sourceTree = "<group>"; };
 		45A5FC3326E57AAC00A40869 /* FlowDiContainerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowDiContainerType.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				4500FFAD2751425A0032BD0E /* FlowStepPublisher.swift */,
 				4500FFAE2751425A0032BD0E /* FlowStepSubscriber.swift */,
 				45A5FC3026E57AAC00A40869 /* FlowStepType.swift */,
+				454E86FD2751512E00525D9C /* FlowView.swift */,
 			);
 			name = Flow;
 			path = Sources/Flow;
@@ -224,6 +227,7 @@
 			buildActionMask = 0;
 			files = (
 				45A5FC3626E57AAC00A40869 /* FlowCompletedStepType.swift in Sources */,
+				454E86FE2751512E00525D9C /* FlowView.swift in Sources */,
 				OBJ_21 /* Flow.swift in Sources */,
 				4500FFAF2751425A0032BD0E /* FlowStepPublisher.swift in Sources */,
 				4500FFB02751425A0032BD0E /* FlowStepSubscriber.swift in Sources */,

@@ -17,14 +17,14 @@ class SignInFlow: Flow<SignInFlowDiContainer, AppFlowStep, SignInFlowCompletedSt
 
     }
     
-    override func initialView() -> UIViewController {
+    override func initialView() -> FlowView {
         
         let viewModel = SignInViewModel(
             stepPublisher: stepPublisher
         )
         let view = TemplateView(viewModel: viewModel)
         
-        return view
+        return FlowView(view: view)
     }
     
     override func navigate(step: AppFlowStep) {
