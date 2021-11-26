@@ -21,8 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4500FFAF2751425A0032BD0E /* FlowStepPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500FFAD2751425A0032BD0E /* FlowStepPublisher.swift */; };
+		4500FFB02751425A0032BD0E /* FlowStepSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500FFAE2751425A0032BD0E /* FlowStepSubscriber.swift */; };
 		45A5FC3426E57AAC00A40869 /* FlowStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3026E57AAC00A40869 /* FlowStepType.swift */; };
-		45A5FC3526E57AAC00A40869 /* FlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3126E57AAC00A40869 /* FlowDelegate.swift */; };
 		45A5FC3626E57AAC00A40869 /* FlowCompletedStepType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */; };
 		45A5FC3726E57AAC00A40869 /* FlowDiContainerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5FC3326E57AAC00A40869 /* FlowDiContainerType.swift */; };
 		OBJ_21 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Flow.swift */; };
@@ -49,8 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4500FFAD2751425A0032BD0E /* FlowStepPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepPublisher.swift; sourceTree = "<group>"; };
+		4500FFAE2751425A0032BD0E /* FlowStepSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepSubscriber.swift; sourceTree = "<group>"; };
 		45A5FC3026E57AAC00A40869 /* FlowStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowStepType.swift; sourceTree = "<group>"; };
-		45A5FC3126E57AAC00A40869 /* FlowDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowDelegate.swift; sourceTree = "<group>"; };
 		45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowCompletedStepType.swift; sourceTree = "<group>"; };
 		45A5FC3326E57AAC00A40869 /* FlowDiContainerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowDiContainerType.swift; sourceTree = "<group>"; };
 		"Flow::Flow::Product" /* Flow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,8 +130,9 @@
 			children = (
 				OBJ_9 /* Flow.swift */,
 				45A5FC3226E57AAC00A40869 /* FlowCompletedStepType.swift */,
-				45A5FC3126E57AAC00A40869 /* FlowDelegate.swift */,
 				45A5FC3326E57AAC00A40869 /* FlowDiContainerType.swift */,
+				4500FFAD2751425A0032BD0E /* FlowStepPublisher.swift */,
+				4500FFAE2751425A0032BD0E /* FlowStepSubscriber.swift */,
 				45A5FC3026E57AAC00A40869 /* FlowStepType.swift */,
 			);
 			name = Flow;
@@ -220,9 +223,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				45A5FC3526E57AAC00A40869 /* FlowDelegate.swift in Sources */,
 				45A5FC3626E57AAC00A40869 /* FlowCompletedStepType.swift in Sources */,
 				OBJ_21 /* Flow.swift in Sources */,
+				4500FFAF2751425A0032BD0E /* FlowStepPublisher.swift in Sources */,
+				4500FFB02751425A0032BD0E /* FlowStepSubscriber.swift in Sources */,
 				45A5FC3726E57AAC00A40869 /* FlowDiContainerType.swift in Sources */,
 				45A5FC3426E57AAC00A40869 /* FlowStepType.swift in Sources */,
 			);

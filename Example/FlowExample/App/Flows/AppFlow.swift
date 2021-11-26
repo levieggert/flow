@@ -6,23 +6,23 @@
 import UIKit
 import Flow
 
-class AppFlow: Flow<CoreDiContainer, AppFlowCompletedStep> {
+class AppFlow: Flow<CoreDiContainer, AppFlowStep, AppFlowCompletedStep> {
         
     private var onboardingFlow: OnboardingFlow?
     private var navigationStarted: Bool = false
     private var observersAdded: Bool = false
     private var appIsInBackground: Bool = false
-              
-    override init(diContainer: CoreDiContainer, completed: @escaping FlowCompleted) {
-                      
-        super.init(diContainer: diContainer, completed: completed)
+    
+    override init(diContainer: CoreDiContainer, navigationController: UINavigationController = UINavigationController(), flowCompleted: @escaping ((AppFlowCompletedStep) -> Void)) {
+        
+        super.init(diContainer: diContainer, navigationController: navigationController, flowCompleted: flowCompleted)
         
         navigationController.view.backgroundColor = UIColor.white
         navigationController.setNavigationBarHidden(false, animated: false)
                         
         addObservers()
     }
-    
+
     deinit {
         removeObservers()
     }
@@ -31,13 +31,9 @@ class AppFlow: Flow<CoreDiContainer, AppFlowCompletedStep> {
         return navigationController
     }
     
-    override func navigate(step: FlowStepType) {
-            
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
+    override func navigate(step: AppFlowStep) {
         
-        switch appStep {
+        switch step {
             
         case .appLaunchedFromTerminatedState:
             navigateToOnboardingFlow(animated: true)
@@ -52,16 +48,15 @@ class AppFlow: Flow<CoreDiContainer, AppFlowCompletedStep> {
     
     private func navigateToOnboardingFlow(animated: Bool) {
         
-        let onboardingFlow = OnboardingFlow(diContainer: OnboardingFlowDiContainer()) { [weak self] (step: OnboardingFlowCompletedStep) in
+        let onboardingFlow = OnboardingFlow(diContainer: OnboardingFlowDiContainer()) { [weak self] (completedStep: OnboardingFlowCompletedStep) in
             
-            switch step {
-            
+            switch completedStep {
             case .completed:
                 self?.dismissOnboardingFlow(animated: true)
             }
         }
-                
-        presentFlow(flow: onboardingFlow, animated: animated, completion: nil)
+        
+        presentFlow(flow: onboardingFlow, animated: true, presentationCompleted: nil)
         
         self.onboardingFlow = onboardingFlow
     }

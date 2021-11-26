@@ -5,32 +5,49 @@
 
 import UIKit
 
-open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCompletedStepType>: NSObject, FlowDelegate {
+open class Flow<FlowDiContainer: FlowDiContainerType, FlowStep: FlowStepType, FlowCompletedStep: FlowCompletedStepType>: NSObject {
+        
+    private let flowCompletedClosure: ((_ step: FlowCompletedStep) -> Void)?
+    private var stepSubscriber: FlowStepSubscriber<FlowStep>?
     
-    public typealias FlowCompleted = ((_ step: FlowCompletedStep) -> Void)
-    
-    public private(set) var navigationController: UINavigationController = UINavigationController()
+    public private(set) var navigationController: UINavigationController
     public let diContainer: FlowDiContainer
+    public let stepPublisher: FlowStepPublisher<FlowStep> = FlowStepPublisher()
     
-    private let flowCompletedClosure: FlowCompleted?
-    
-    public init(diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
+    public init(diContainer: FlowDiContainer, navigationController: UINavigationController = UINavigationController(), flowCompleted: @escaping ((_ step: FlowCompletedStep) -> Void)) {
+        
         print("init flow: \(type(of: self))")
+        
         self.diContainer = diContainer
-        self.flowCompletedClosure = completed
+        self.navigationController = navigationController
+        self.flowCompletedClosure = flowCompleted
+        
         super.init()
+        
+        addStepSubscriber()
     }
     
-    public init(navigationController: UINavigationController, diContainer: FlowDiContainer, completed: @escaping FlowCompleted) {
-        print("init flow: \(type(of: self))")
-        self.navigationController = navigationController
-        self.diContainer = diContainer
-        self.flowCompletedClosure = completed
-        super.init()
+    private func addStepSubscriber() {
+        
+        guard stepSubscriber == nil else {
+            return
+        }
+        
+        let stepSubscriber: FlowStepSubscriber<FlowStep> = FlowStepSubscriber(stepPublished: { [weak self] (step: FlowStep) in
+            self?.navigate(step: step)
+        })
+        
+        stepPublisher.subscribe(subscriber: stepSubscriber)
+        
+        self.stepSubscriber = stepSubscriber
     }
     
     deinit {
         print("x deinit: \(type(of: self))")
+        
+        if let stepSubscriber = stepSubscriber {
+            stepPublisher.unsubscribe(subscriber: stepSubscriber)
+        }
     }
     
     open var presentsInitialViewOnFlowInsteadOfNavigationController: Bool {
@@ -42,8 +59,8 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         return UIViewController()
     }
     
-    open func navigate(step: FlowStepType) {
-        assertionFailure("\nFlow: navigate(step: FlowStepType) Subclasses should override this method.")
+    open func navigate(step: FlowStep) {
+        assertionFailure("\nFlow: navigate(step: FlowStep) Subclasses should override this method.")
     }
     
     // MARK: _
@@ -54,14 +71,14 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
     
     // MARK: -
     
-    public func addFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, sharesNavigationControllerWithParentFlow: Bool) {
-        
+    public func addFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, sharesNavigationControllerWithParentFlow: Bool) {
+                
         if sharesNavigationControllerWithParentFlow {
             flow.navigationController = navigationController
         }
     }
         
-    public func setFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool) {
+    public func setFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool) {
         
         let initialView: UIViewController = flow.initialView()
         
@@ -77,7 +94,7 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         navigationController.setViewControllers([initialView], animated: animated)
     }
     
-    public func pushFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool) {
+    public func pushFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool) {
         
         let initialView: UIViewController = flow.initialView()
         
@@ -98,7 +115,7 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         }
     }
     
-    public func presentFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool, completion: (() -> Void)?) {
+    public func presentFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool, presentationCompleted: (() -> Void)?) {
         
         let initialView: UIViewController = flow.initialView()
         
@@ -130,15 +147,15 @@ open class Flow<FlowDiContainer: FlowDiContainerType, FlowCompletedStep: FlowCom
         }
         
         if animated {
-            navigationController.present(viewForPresentation, animated: true, completion: completion)
+            navigationController.present(viewForPresentation, animated: true, completion: presentationCompleted)
         }
         else {
             navigationController.present(viewForPresentation, animated: false, completion: nil)
-            completion?()
+            presentationCompleted?()
         }
     }
     
-    public func dismissFlow<T: FlowDiContainerType, U: FlowCompletedStepType>(flow: Flow<T, U>, animated: Bool, completion: (() -> Void)?) {
+    public func dismissFlow<T: FlowDiContainerType, U: FlowStepType, V: FlowCompletedStepType>(flow: Flow<T, U, V>, animated: Bool, completion: (() -> Void)?) {
         
         guard navigationController.presentedViewController == flow.navigationController else {
             assertionFailure("\nFlow: dismissFlow() Failed to dismiss flow because the flow wasn't presented by this flow.")

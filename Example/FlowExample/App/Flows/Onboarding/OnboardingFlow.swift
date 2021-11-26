@@ -6,14 +6,14 @@
 import UIKit
 import Flow
 
-class OnboardingFlow: Flow<OnboardingFlowDiContainer, OnboardingFlowCompletedStep> {
+class OnboardingFlow: Flow<OnboardingFlowDiContainer, AppFlowStep, OnboardingFlowCompletedStep> {
     
     private var tutorialFlow: OnboardingTutorialFlow?
     private var signInFlow: SignInFlow?
         
-    override init(diContainer: OnboardingFlowDiContainer, completed: @escaping FlowCompleted) {
-                
-        super.init(diContainer: diContainer, completed: completed)
+    override init(diContainer: OnboardingFlowDiContainer, navigationController: UINavigationController = UINavigationController(), flowCompleted: @escaping ((OnboardingFlowCompletedStep) -> Void)) {
+        
+        super.init(diContainer: diContainer, navigationController: navigationController, flowCompleted: flowCompleted)
         
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.view.backgroundColor = UIColor.white
@@ -28,20 +28,16 @@ class OnboardingFlow: Flow<OnboardingFlowDiContainer, OnboardingFlowCompletedSte
     override func initialView() -> UIViewController {
         
         let viewModel = OnboardingWelcomeViewModel(
-            flowDelegate: self
+            stepPublisher: stepPublisher
         )
         let view = TemplateView(viewModel: viewModel)
         
         return view
     }
     
-    override func navigate(step: FlowStepType) {
+    override func navigate(step: AppFlowStep) {
         
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
-        
-        switch appStep {
+        switch step {
        
         case .continueTappedFromWelcome:
             navigateToTutorialFlow(animated: true)

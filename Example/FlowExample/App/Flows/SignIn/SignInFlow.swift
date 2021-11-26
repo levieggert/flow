@@ -6,11 +6,11 @@
 import UIKit
 import Flow
 
-class SignInFlow: Flow<SignInFlowDiContainer, SignInFlowCompletedStep> {
+class SignInFlow: Flow<SignInFlowDiContainer, AppFlowStep, SignInFlowCompletedStep> {
     
-    override init(diContainer: SignInFlowDiContainer, completed: @escaping FlowCompleted) {
+    override init(diContainer: SignInFlowDiContainer, navigationController: UINavigationController = UINavigationController(), flowCompleted: @escaping ((SignInFlowCompletedStep) -> Void)) {
         
-        super.init(diContainer: diContainer, completed: completed)
+        super.init(diContainer: diContainer, navigationController: navigationController, flowCompleted: flowCompleted)
     }
     
     deinit {
@@ -19,19 +19,17 @@ class SignInFlow: Flow<SignInFlowDiContainer, SignInFlowCompletedStep> {
     
     override func initialView() -> UIViewController {
         
-        let viewModel = SignInViewModel(flowDelegate: self)
+        let viewModel = SignInViewModel(
+            stepPublisher: stepPublisher
+        )
         let view = TemplateView(viewModel: viewModel)
         
         return view
     }
     
-    override func navigate(step: FlowStepType) {
-             
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
+    override func navigate(step: AppFlowStep) {
         
-        switch appStep {
+        switch step {
             
         case .backTappedFromSignIn:
             completeFlow(step: .userNavigatedBackFromSignIn)

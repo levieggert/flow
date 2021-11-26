@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     override init() {
-        
-        appFlow = AppFlow(diContainer: coreDiContainer, completed: { (step: AppFlowCompletedStep) in
+            
+        appFlow = AppFlow(diContainer: coreDiContainer, flowCompleted: { (step: AppFlowCompletedStep) in
             
         })
         

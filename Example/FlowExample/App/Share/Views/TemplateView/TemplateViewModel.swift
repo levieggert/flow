@@ -6,15 +6,15 @@
 import Foundation
 import Flow
 
-class TemplateViewModel: TemplateViewModelType {
-    
-    private weak var flowDelegate: FlowDelegate?
+class TemplateViewModel<FlowStep: FlowStepType>: TemplateViewModelType {
+        
+    private let stepPublisher: FlowStepPublisher<FlowStep>
     
     let title: String = "Template"
     
-    required init(flowDelegate: FlowDelegate) {
+    required init(stepPublisher: FlowStepPublisher<FlowStep>) {
         
-        self.flowDelegate = flowDelegate
+        self.stepPublisher = stepPublisher
     }
     
     func backTapped() {

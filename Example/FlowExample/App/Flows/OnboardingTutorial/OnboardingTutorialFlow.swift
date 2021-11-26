@@ -6,11 +6,11 @@
 import UIKit
 import Flow
 
-class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, OnboardingTutorialFlowCompletedStep> {
-                        
-    override init(diContainer: OnboardingTutorialFlowDiContainer, completed: @escaping FlowCompleted) {
-                
-        super.init(diContainer: diContainer, completed: completed)
+class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, AppFlowStep, OnboardingTutorialFlowCompletedStep> {
+             
+    override init(diContainer: OnboardingTutorialFlowDiContainer, navigationController: UINavigationController = UINavigationController(), flowCompleted: @escaping ((OnboardingTutorialFlowCompletedStep) -> Void)) {
+        
+        super.init(diContainer: diContainer, navigationController: navigationController, flowCompleted: flowCompleted)
     }
     
     deinit {
@@ -20,20 +20,17 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, Onboarding
     override func initialView() -> UIViewController {
         
         let viewModel = OnboardingTutorialOneViewModel(
-            flowDelegate: self
+            stepPublisher: stepPublisher
         )
+        
         let view = TemplateView(viewModel: viewModel)
         
         return view
     }
     
-    override func navigate(step: FlowStepType) {
+    override func navigate(step: AppFlowStep) {
         
-        guard let appStep = step as? AppFlowStep else {
-            return
-        }
-        
-        switch appStep {
+        switch step {
            
         case .backTappedFromOnboardingTutorialOne:
             completeFlow(step: .userNavigatedBackFromTutorial)
@@ -41,7 +38,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, Onboarding
         case .continueTappedFromOnboardingTutorialOne:
             
             let viewModel = OnboardingTutorialTwoViewModel(
-                flowDelegate: self
+                stepPublisher: stepPublisher
             )
             let view = TemplateView(viewModel: viewModel)
             
@@ -53,7 +50,7 @@ class OnboardingTutorialFlow: Flow<OnboardingTutorialFlowDiContainer, Onboarding
         case .continueTappedFromOnboardingTutorialTwo:
             
             let viewModel = OnboardingTutorialThreeViewModel(
-                flowDelegate: self
+                stepPublisher: stepPublisher
             )
             let view = TemplateView(viewModel: viewModel)
             

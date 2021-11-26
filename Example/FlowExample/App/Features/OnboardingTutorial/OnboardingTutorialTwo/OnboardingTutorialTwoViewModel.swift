@@ -8,20 +8,20 @@ import Flow
 
 class OnboardingTutorialTwoViewModel: TemplateViewModelType {
     
-    private weak var flowDelegate: FlowDelegate?
+    private let stepPublisher: FlowStepPublisher<AppFlowStep>
     
     let title: String = "Tutorial Two"
     
-    required init(flowDelegate: FlowDelegate) {
+    required init(stepPublisher: FlowStepPublisher<AppFlowStep>) {
         
-        self.flowDelegate = flowDelegate
+        self.stepPublisher = stepPublisher
     }
     
     func backTapped() {
-        flowDelegate?.navigate(step: AppFlowStep.backTappedFromOnboardingTutorialTwo)
+        stepPublisher.send(step: .backTappedFromOnboardingTutorialTwo)
     }
     
     func continueTapped() {
-        flowDelegate?.navigate(step: AppFlowStep.continueTappedFromOnboardingTutorialTwo)
+        stepPublisher.send(step: .continueTappedFromOnboardingTutorialTwo)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4500FFB4275142C00032BD0E /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 4500FFB3275142C00032BD0E /* Flow */; };
 		45A603E6270A5C9800AAF1E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45A603E5270A5C9800AAF1E5 /* Assets.xcassets */; };
 		45A603E9270A5C9800AAF1E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A603E7270A5C9800AAF1E5 /* LaunchScreen.storyboard */; };
 		45A603F4270A5C9800AAF1E5 /* FlowExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A603F3270A5C9800AAF1E5 /* FlowExampleTests.swift */; };
@@ -33,7 +34,6 @@
 		45A60446270A5D8F00AAF1E5 /* TemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A60430270A5D8F00AAF1E5 /* TemplateView.xib */; };
 		45A60447270A5D8F00AAF1E5 /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A60431270A5D8F00AAF1E5 /* TemplateViewModel.swift */; };
 		45A60448270A5D8F00AAF1E5 /* TemplateViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A60432270A5D8F00AAF1E5 /* TemplateViewModelType.swift */; };
-		45A60452270A5FC800AAF1E5 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 45A60451270A5FC800AAF1E5 /* Flow */; };
 		45A60454270A5FF400AAF1E5 /* CoreDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A60453270A5FF400AAF1E5 /* CoreDiContainer.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4500FFB1275142B50032BD0E /* flow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = flow; path = ..; sourceTree = "<group>"; };
 		45A603D9270A5C9700AAF1E5 /* FlowExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A603E5270A5C9800AAF1E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45A603E8270A5C9800AAF1E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A60452270A5FC800AAF1E5 /* Flow in Frameworks */,
+				4500FFB4275142C00032BD0E /* Flow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,13 +117,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4500FFB2275142C00032BD0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45A603D0270A5C9700AAF1E5 = {
 			isa = PBXGroup;
 			children = (
+				4500FFB1275142B50032BD0E /* flow */,
 				45A603DB270A5C9700AAF1E5 /* FlowExample */,
 				45A603F2270A5C9800AAF1E5 /* FlowExampleTests */,
 				45A603FD270A5C9800AAF1E5 /* FlowExampleUITests */,
 				45A603DA270A5C9700AAF1E5 /* Products */,
+				4500FFB2275142C00032BD0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,7 +350,7 @@
 			);
 			name = FlowExample;
 			packageProductDependencies = (
-				45A60451270A5FC800AAF1E5 /* Flow */,
+				4500FFB3275142C00032BD0E /* Flow */,
 			);
 			productName = FlowExample;
 			productReference = 45A603D9270A5C9700AAF1E5 /* FlowExample.app */;
@@ -414,7 +424,6 @@
 			);
 			mainGroup = 45A603D0270A5C9700AAF1E5;
 			packageReferences = (
-				45A60450270A5FC800AAF1E5 /* XCRemoteSwiftPackageReference "Flow" */,
 			);
 			productRefGroup = 45A603DA270A5C9700AAF1E5 /* Products */;
 			projectDirPath = "";
@@ -810,21 +819,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		45A60450270A5FC800AAF1E5 /* XCRemoteSwiftPackageReference "Flow" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/levieggert/Flow.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		45A60451270A5FC800AAF1E5 /* Flow */ = {
+		4500FFB3275142C00032BD0E /* Flow */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 45A60450270A5FC800AAF1E5 /* XCRemoteSwiftPackageReference "Flow" */;
 			productName = Flow;
 		};
 /* End XCSwiftPackageProductDependency section */
