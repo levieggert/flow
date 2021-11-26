@@ -7,7 +7,7 @@ import UIKit
 
 public class FlowView {
     
-    let view: UIViewController
+    public let view: UIViewController
     
     public required init(view: UIViewController) {
         
